@@ -1,0 +1,150 @@
+<!--<div class="container-fluid">-->
+<!--  <div class=" mb-3 contest row align-items-center">-->
+<!--    <span class="text-header col-md-4">Sum over subsets</span>-->
+<!--    <div class="col-md-7 offset-1">-->
+<!--      <button (click)="onTabClick(i)" *ngFor="let ques of allQuestions; let i = index;"-->
+<!--              [class.selected]="ques.isSelected === true" class="abc-btn mr-5" mat-raised-button>{{getQuestionTab(i)}}-->
+<!--      </button>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--    <div class="row">-->
+<!--    <div class="div1 col-md-4">-->
+<!--      <div class="d-flex">-->
+<!--      <p class="text-label-styling">Time limit per test:</p><p class="text-value-styling">{{currentQuestion?.timeSec}}</p>-->
+<!--      </div>-->
+<!--      <div class="d-flex">-->
+<!--      <p class="text-label-styling">Memory limit per test:</p><p class="text-value-styling">{{currentQuestion?.memoryKB}}</p>-->
+<!--      </div>-->
+<!--      <div [innerHTML]="questionFile"></div>-->
+<!--      <div class="example-label-styling mt-3">Examples-->
+<!--        <div *ngIf="currentQuestion?.exampleInput1">-->
+<!--        <div class="example-input">-->
+<!--        <div class="example-title">Input</div>-->
+<!--        <pre class="example-data">{{currentQuestion?.exampleInput1}}</pre>-->
+<!--        </div>-->
+<!--        <div class="example-output">-->
+<!--          <div class="example-title">Output</div>-->
+<!--          <pre class="example-data">{{currentQuestion?.exampleOutput1}}</pre>-->
+<!--        </div>-->
+<!--        </div>-->
+<!--        <div *ngIf="currentQuestion?.exampleInput2">-->
+<!--        <div class="example-input mt-3">-->
+<!--          <div class="example-title">Input</div>-->
+<!--          <pre class="example-data">{{currentQuestion?.exampleInput2}}</pre>-->
+<!--        </div>-->
+<!--        <div class="example-output">-->
+<!--          <div class="example-title">Output</div>-->
+<!--          <pre class="example-data">{{currentQuestion?.exampleOutput2}}</pre>-->
+<!--        </div>-->
+<!--        </div>-->
+<!--        <div *ngIf="currentQuestion?.exampleInput3">-->
+<!--        <div class="example-input mt-3">-->
+<!--          <div class="example-title">Input</div>-->
+<!--          <pre class="example-data">{{currentQuestion?.exampleInput3}}</pre>-->
+<!--        </div>-->
+<!--        <div class="example-output">-->
+<!--          <div class="example-title">Output</div>-->
+<!--          <pre class="example-data">{{currentQuestion?.exampleOutput3}}</pre>-->
+<!--        </div>-->
+<!--        </div>-->
+<!--        <div class="example-label-styling">Description-->
+<!--          <div class="example-desc" *ngIf="currentQuestion?.exampleDesc1">{{currentQuestion?.exampleDesc1}}</div>-->
+<!--          <div class="example-desc" *ngIf="currentQuestion?.exampleDesc2">{{currentQuestion?.exampleDesc2}}</div>-->
+<!--          <div class="example-desc" *ngIf="currentQuestion?.exampleDesc3">{{currentQuestion?.exampleDesc3}}</div>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--    <div class="col-md-7 offset-1">-->
+<!--      <div class="div2">-->
+<!--        <div class="lang float-right">-->
+<!--        <mat-select [(ngModel)]="language" [disabled]="disableSelect.value">-->
+<!--          <mat-option value="python">Python</mat-option>-->
+<!--          <mat-option value="nodeJS" disabled>NodeJS (disabled)</mat-option>-->
+<!--          <mat-option value="java">Java</mat-option>-->
+<!--          <mat-option value="C">C</mat-option>-->
+<!--          <mat-option value="C++">C++</mat-option>-->
+<!--        </mat-select>-->
+<!--        </div>-->
+<!--        <textarea [(ngModel)]="code" class="code" placeholder="Write your code!"></textarea>-->
+<!--      </div>-->
+<!--      <button mat-button class="upload-btn mt-2">-->
+<!--        <mat-icon class="mr-2">upload</mat-icon>Upload file</button>-->
+<!--      <div class="float-right mt-3">-->
+<!--        <button mat-raised-button class="run-btn">RUN</button>-->
+<!--        <button mat-button class="submit-btn ml-3" (click)="submitCode()">SUBMIT</button>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--    </div>-->
+<!--</div>-->
+
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="div1 col-md-4">
+      <div class="d-flex">
+        <p class="text-label-styling">Time limit per test:</p><p class="text-value-styling">{{question?.timeSec}}</p>
+      </div>
+      <div class="d-flex">
+        <p class="text-label-styling">Memory limit per test:</p><p class="text-value-styling">{{question?.memoryKB}}</p>
+      </div>
+      <div [innerHTML]="questionFile"></div>
+      <div class="example-label-styling mt-3">Examples
+        <div *ngIf="currentQuestion?.exampleInput1">
+          <div class="example-input">
+            <div class="example-title">Input</div>
+            <pre class="example-data">{{question?.exampleInput1}}</pre>
+          </div>
+          <div class="example-output">
+            <div class="example-title">Output</div>
+            <pre class="example-data">{{question?.exampleOutput1}}</pre>
+          </div>
+        </div>
+        <div *ngIf="question?.exampleInput2">
+          <div class="example-input mt-3">
+            <div class="example-title">Input</div>
+            <pre class="example-data">{{question?.exampleInput2}}</pre>
+          </div>
+          <div class="example-output">
+            <div class="example-title">Output</div>
+            <pre class="example-data">{{question?.exampleOutput2}}</pre>
+          </div>
+        </div>
+        <div *ngIf="question?.exampleInput3">
+          <div class="example-input mt-3">
+            <div class="example-title">Input</div>
+            <pre class="example-data">{{question?.exampleInput3}}</pre>
+          </div>
+          <div class="example-output">
+            <div class="example-title">Output</div>
+            <pre class="example-data">{{question?.exampleOutput3}}</pre>
+          </div>
+        </div>
+        <div class="example-label-styling">Description
+          <div class="example-desc" *ngIf="question?.exampleDesc1">{{question?.exampleDesc1}}</div>
+          <div class="example-desc" *ngIf="question?.exampleDesc2">{{question?.exampleDesc2}}</div>
+          <div class="example-desc" *ngIf="question?.exampleDesc3">{{question?.exampleDesc3}}</div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-7 offset-1">
+      <div class="div2">
+        <div class="lang float-right">
+          <mat-select [(ngModel)]="language" [disabled]="disableSelect.value">
+            <mat-option value="python">Python</mat-option>
+            <mat-option value="nodeJS" disabled>NodeJS (disabled)</mat-option>
+            <mat-option value="java">Java</mat-option>
+            <mat-option value="C">C</mat-option>
+            <mat-option value="C++">C++</mat-option>
+          </mat-select>
+        </div>
+        <textarea [(ngModel)]="code" class="code" placeholder="Write your code!"></textarea>
+      </div>
+      <button mat-button class="upload-btn mt-2">
+        <mat-icon class="mr-2">upload</mat-icon>Upload file</button>
+      <div class="float-right mt-3">
+        <button mat-raised-button class="run-btn">RUN</button>
+        <button mat-button class="submit-btn ml-3" (click)="submitCode()">SUBMIT</button>
+      </div>
+    </div>
+  </div>
+</div>

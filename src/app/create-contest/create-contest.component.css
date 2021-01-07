@@ -1,0 +1,279 @@
+.container-fluid {
+  padding-left: 80px;
+  height: 100%;
+  width: 100%;
+  background-color: whitesmoke;
+}
+
+.text-header {
+  font-size: 18px;
+  font-family: "FreeMono";
+}
+
+.abc-btn {
+  border-radius: 20px;
+  background: gainsboro;
+  font-size: 13px;
+}
+
+.firstCard {
+  border-radius: 20px;
+  background: white;
+  height: max-content;
+}
+
+.innerCard-1 {
+  border: 2px solid lightgrey;
+  border-radius: 12px;
+  background: gainsboro;
+  width: 100%;
+  height: 200px;
+  text-align: center;
+  font-family: FreeMono;
+  font-size: 14px;
+}
+
+.innerCard-2 {
+  border: 2px solid lightgrey;
+  margin-top: 5px;
+  border-radius: 12px;
+  background: gainsboro;
+  width: 100%;
+  height: 100px;
+  text-align: center;
+  font-family: FreeMono;
+  font-size: 14px;
+}
+
+.name {
+  width: 100%;
+  padding: 6px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  background-color: gainsboro;
+  border-radius: 15px;
+  border: 2px solid lightgrey;
+  font-size: 12px;
+  font-family: "FreeMono";
+}
+
+.datetime {
+  border-radius: 15px;
+  background-color: gainsboro;
+  margin-bottom: 15px;
+  margin-top: 15px;
+  /*margin: 15px;*/
+  padding-left: 10px;
+  width: 120px;
+  border: 2px solid lightgrey;
+  font-size: 12px;
+  font-family: "FreeMono";
+  height: 35px;
+}
+
+hr.solid {
+  border-top: 3px solid #bbb;
+}
+
+.add-create-btn {
+  text-align: center;
+  border-radius: 10px;
+  font-size: 12px;
+  background: gainsboro;
+  height: 70px;
+  width: 120px;
+  font-family: "FreeMono";
+}
+
+.contest {
+  margin-top: -36px;
+}
+
+.title {
+  font-size: 12px;
+  width: 60%;
+  padding: 6px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  background-color: white;
+  border-radius: 15px;
+  border: 2px solid white;
+  font-family: "FreeMono";
+}
+
+.test-case {
+  font-size: 12px;
+  width: 100%;
+  height: 80px;
+  padding: 6px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  background-color: gainsboro;
+  border-radius: 10px;
+  border: 2px solid white;
+  font-family: "FreeMono";
+  overflow-wrap: break-word;
+}
+
+.marks {
+  border-radius: 15px;
+  background-color: white;
+  margin: 8px 0;
+  padding: 6px 20px;
+  width: 120px;
+  font-size: 12px;
+  font-family: "FreeMono";
+  border: 2px solid white;
+}
+
+.tags {
+  width: 35%;
+  padding: 5px 10px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  background-color: white;
+  border-radius: 10px;
+  border: 2px solid white;
+  font-size: 12px;
+  font-family: "FreeMono";
+}
+
+.question {
+  font-family: Arial;
+  font-size: 12px;
+  padding: 10px;
+  background-color: white;
+  /*height: 280px;*/
+  height: 200px;
+  width: 100%;
+  resize: none;
+  overflow-wrap: break-word;
+}
+
+.box {
+  margin-top: 20px;
+  background: white;
+  border-radius: 10px;
+  width: 90%;
+}
+
+.box-inp {
+  background: gainsboro;
+  border-radius: 15px;
+  font-size: 10px;
+  font-family: "FreeMono";
+  border: 2px solid white;
+  padding: 8px;
+  width: 100px;
+  /*text-align: center;*/
+}
+
+.save-btn {
+  background-color: forestgreen;
+  border-radius: 10px;
+  font-family: "FreeMono";
+  color: white;
+  font-weight: bold;
+  height: min-content;
+}
+
+.add-icon {
+  color: white;
+}
+
+:host ::ng-deep .mat-form-field-appearance-fill .mat-form-field-flex {
+  border-radius: 4px 4px 0 0;
+  padding: 0 !important;
+}
+
+:host ::ng-deep .mat-form-field-flex {
+  display: inline-flex;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+:host ::ng-deep .mat-form-field-appearance-fill .mat-form-field-flex {
+  background-color: inherit;
+}
+
+textarea {
+  margin: 5px;
+  resize: none;
+  background-color: white;
+  border-radius: 10px;
+  border: 2px solid white;
+  font-size: 12px;
+  font-family: "FreeMono";
+}
+
+/*:host ::ng-deep .mat-form-field-wrapper {*/
+/*  !* padding-bottom: 1.34375em; *!*/
+/*  height: 30px;*/
+/*}*/
+
+:host ::ng-deep .mat-form-field-infix {
+   padding: 0;
+   border-top: 0;
+}
+
+.start-end {
+  margin-bottom: 8px;
+}
+
+.btn-align {
+  text-align: center;
+}
+
+.divider {
+  width: 25px;
+  background-color: gainsboro;
+  height: 2px;
+}
+
+.selected {
+  background-color: gray;
+  color: whitesmoke;
+}
+
+.tc-btn {
+  float: right;
+  border-radius: 10px;
+  background: gray;
+  color: white;
+  border: 2px solid whitesmoke;
+  font-family: "FreeMono";
+  font-weight: bold;
+  padding-bottom: 5px;
+}
+
+.In-Op {
+  width: 44%;
+}
+
+.desc {
+  width: 90%;
+}
+
+.submit-btn {
+  background-color: gray;
+  color: white;
+}
+
+:host ::ng-deep .ck.ck-editor__main > .ck-editor__editable:not(.ck-focused) {
+  border-color: white;
+}
+
+:host ::ng-deep .ck.ck-toolbar {
+  border: white;
+}
+
+/*.editor {*/
+/*  border: white;*/
+/*  max-height: 260px;*/
+/*}*/
+
+:host ::ng-deep .ck-editor__editable_inline {
+  height: 200px;
+  outline: none;
+}
+

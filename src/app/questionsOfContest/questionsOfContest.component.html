@@ -1,0 +1,8 @@
+<div class="container-fluid">
+  <h3>Questions</h3>
+      <div (click)="onClick(question.qId)" class="question p-2" *ngFor="let question of questionService.allQuestions; let i = index">
+        <span class="badge-name mr-2">{{getQuestionBadge(i)}}</span> <span style="font-weight: bold">{{question.title}}</span>
+         <span style="color: gray" class="float-right ml-4">Memory: {{question.memoryKB}}</span>
+        <span style="color: gray" class="float-right">Time taken: {{question.timeSec}}</span>
+      </div>
+</div>

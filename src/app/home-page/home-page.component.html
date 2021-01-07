@@ -1,0 +1,30 @@
+<div class="container-fluid">
+  <mat-sidenav-container autosize>
+    <mat-sidenav #sidenav class="sidenav" mode="side" opened="false">
+      <mat-nav-list>
+        <a mat-list-item routerLink="./create" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">
+          <mat-icon class="clr-icon">edit</mat-icon>
+          &nbsp;
+          Create Contest
+        </a>
+        <a mat-list-item routerLink="./contests" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">
+          <mat-icon class="clr-icon">dashboard</mat-icon>
+          &nbsp;
+          Contests
+        </a>
+<!--        <a mat-list-item routerLink="./sum" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">-->
+<!--          <mat-icon class="clr-icon">dashboard</mat-icon>-->
+<!--          &nbsp;-->
+<!--          Sum over subsets-->
+<!--        </a>-->
+      </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content class="sidenav-content">
+      <button mat-icon-button class="menu-btn">
+        <mat-icon matTooltip="Menu" (click)="sidenav.toggle()">menu</mat-icon>
+      </button>
+        <router-outlet></router-outlet>
+<!--          <app-create-contest></app-create-contest>-->
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>

@@ -1,0 +1,121 @@
+<div class="container-fluid">
+  <div class="mb-3 contest row align-items-center">
+    <span class="text-header col-md-4">Create Contest</span>
+    <div *ngIf="questionTab?.length" class="col-md-7 offset-1">
+      <button (click)="onTabClick(i)" *ngFor="let tab of questionTab; let i = index;"
+              [class.selected]="tab.isSelected === true" class="abc-btn mr-5" mat-raised-button>{{getQuestionTab(i)}}
+      </button>
+    </div>
+  </div>
+  <div class="row">
+    <mat-card class="col-md-4 firstCard">
+      <form [formGroup]="contestFormGroup">
+        <input class="name" formControlName="contestName" matInput placeholder="Name" type="text">
+        <div class="mb-2 d-flex align-items-center">
+          <mat-form-field appearance="none" class="datetime">
+            <input [ngxMatDatetimePicker]="picker" class="start-end" formControlName="start_date" matInput
+                   placeholder="Start">
+            <mat-datepicker-toggle [for]="picker" matSuffix></mat-datepicker-toggle>
+            <ngx-mat-datetime-picker #picker [enableMeridian]="true" [showSeconds]="false"
+                                     [showSpinners]="true" [touchUi]="true">
+            </ngx-mat-datetime-picker>
+          </mat-form-field>
+          <div class="divider ml-2 mr-2"></div>
+          <mat-form-field appearance="none" class="datetime">
+            <input [ngxMatDatetimePicker]="picker1" class="start-end" formControlName="end_date" matInput
+                   placeholder="End">
+            <mat-datepicker-toggle [for]="picker1" matSuffix></mat-datepicker-toggle>
+            <ngx-mat-datetime-picker #picker1 [enableMeridian]="true" [showSeconds]="false"
+                                     [showSpinners]="true" [touchUi]="true">
+            </ngx-mat-datetime-picker>
+          </mat-form-field>
+        </div>
+        <textarea class="innerCard-1" formControlName="instructions" id="card1" name="card1"
+                  placeholder="Instructions"></textarea>
+        <textarea class="innerCard-2" formControlName="description" id="card2" name="card2"
+                  placeholder="Description"></textarea>
+      </form>
+      <div class="row mt-3 btn-align">
+        <div class="col-md-6">
+          <button (click)="addQuestionClick()" class="add-create-btn" mat-raised-button>
+            <mat-icon>add</mat-icon>
+            <br>
+            Add Question
+          </button>
+        </div>
+        <div class="col-md-6">
+          <button (click)="createContest()" class="add-create-btn" mat-raised-button>
+            <mat-icon>done</mat-icon>
+            <br>
+            Create
+          </button>
+        </div>
+      </div>
+    </mat-card>
+    <div *ngIf="questionTab?.length" class="col-md-7 offset-md-1">
+      <form [formGroup]="questionFormGroup">
+        <input class="title" formControlName="title" matInput placeholder="Title"
+               type="text">
+        <input class="marks ml-3" formControlName="marks" placeholder="Marks"
+               type="text">
+        <input class="tags" matInput placeholder="Tags" type="text">
+        <input formControlName="timeSec" class="box-inp ml-5 mb-2" placeholder="- TL(sec) +">
+        <input formControlName="memoryKB" class="box-inp" placeholder="Mcm(kb)">
+        <div class="box">
+          <div class="float-right">
+          </div>
+          <ckeditor class="editor" [ngModelOptions]="{standalone: true}" [(ngModel)]="questionData" [editor]="Editor">
+          </ckeditor>
+<!--          <p #ques [innerHTML]="this.currentQuestion.questionFile" class="question" contenteditable="true"></p>-->
+        </div>
+          <div formArrayName="example" class="mt-2">
+            <div *ngFor="let control of getExampleFormArray.controls;  let i = index;" [formGroupName]="i">
+              <textarea formControlName="exampleInput" placeholder="Input" class="In-Op"></textarea>
+              <textarea formControlName="exampleOutput" placeholder="Output" class="In-Op"></textarea>
+              <textarea formControlName="exampleDesc" placeholder="Description" class="desc"></textarea>
+              <button matSuffix mat-icon-button (click)="removeExampleFormArray(i)" *ngIf="i!==0">
+                <mat-icon>remove_circle</mat-icon>
+              </button>
+            </div>
+            <button mat-icon-button *ngIf="this.getExampleFormArray.length < 3"><mat-icon (click)="addMoreExample()">add_circle</mat-icon></button>
+          </div>
+          <button (click)="createQuestion()" class="ml-1 save-btn mb-2 mt-2" mat-button>SAVE
+            <mat-icon class="add-icon pl-2">add_circle</mat-icon>
+          </button>
+<!--          <div class="float-right mt-2">-->
+<!--          <label style="font-family: FreeMono; font-size: 14px; font-weight: bold">Test case</label>-->
+<!--          <button mat-icon-button (click)="onUpdate(testCaseDialog)">-->
+<!--            <mat-icon matTooltip="Edit">edit</mat-icon>-->
+<!--          </button>-->
+<!--          </div>-->
+        <div class="float-right">
+          <ng-container>
+            <span *ngFor="let file of testCaseFiles">
+              {{file.name}},
+            </span>
+          </ng-container>
+        <input multiple type="file" id="file" accept="*/*" style="display: none;" (change)="onSelectedFile($event)">
+        <label for="file">
+          <button mat-icon-button><mat-icon>upload</mat-icon>
+          </button>
+          {{filename === '' ? 'Test case': filename}}</label>
+          <button class="ml-3 submit-btn" mat-raised-button (click)="createTestCase()">Submit</button>
+        </div>
+      </form>
+
+<!--      <ng-template #testCaseDialog>-->
+<!--        <p #testCase class="test-case mb-2" contenteditable="true"></p>-->
+<!--        <p #output class="test-case mb-2" contenteditable="true"></p>-->
+<!--        <button class="tc-btn">Upload-->
+<!--          <mat-icon class="add-icon" (click)="createTestCase()">upload</mat-icon></button>-->
+<!--      </ng-template>-->
+
+<!--      <div *ngFor="let tc of testCases;">-->
+<!--      <p #testCase class="test-case mb-2" contenteditable="true"></p>-->
+<!--      <p #output class="test-case mb-2" contenteditable="true"></p>-->
+<!--      </div>-->
+<!--      <button class="tc-btn"><mat-icon (click)="addTestCase()">add_circle</mat-icon></button>-->
+<!--      <button class="tc-btn"><mat-icon (click)="createTestCase()">upload</mat-icon></button>-->
+    </div>
+  </div>
+</div>

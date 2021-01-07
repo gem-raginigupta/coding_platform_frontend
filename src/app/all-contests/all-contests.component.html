@@ -1,0 +1,13 @@
+<div class="container">
+  <h3>Contests</h3>
+<!--<div *ngFor="let contest of contests; let i = index;" class="contests">-->
+<!--  <a (click)="getAllQuestions(contest.cId)"><h5>{{contest.contestName}}</h5></a>-->
+<!--  <p>{{contest.description}}</p>-->
+<!--</div>-->
+  <mat-nav-list *ngFor="let contest of contests; let i = index;" class="contests">
+    <a mat-list-item (click)="onClick(contest.cId)"><h5>{{contest.contestName}}</h5>
+    </a>
+    <p class="pl-3">{{contest.description}}</p>
+  </mat-nav-list>
+  <mat-paginator [pageSizeOptions]="[5,10,15]" (page)="onPaginatorChanged()"></mat-paginator>
+</div>
