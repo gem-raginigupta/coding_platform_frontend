@@ -1,5 +1,5 @@
 import {Component, ElementRef, OnInit, TemplateRef, ViewChild, ViewChildren} from '@angular/core';
-import {ContestService} from '../contest.service';
+import {ContestService} from '../../Services/contest.service';
 import {FormArray, FormBuilder, FormGroup} from '@angular/forms';
 import * as moment from 'moment';
 import {MatDialog} from '@angular/material';

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {HttpHeaders, HttpParams} from '@angular/common/http';
-import {BaseService} from './Core/_api/base.service';
+import {BaseService} from '../Core/_api/base.service';
 import {Observable} from 'rxjs';
 
 @Injectable({
@@ -32,6 +32,11 @@ export class QuestionService {
     this.path = `submit-code/${uId}/${qId}?language=${language}`;
     console.log('path', this.path);
     return this.baseService.post(this.path, data);
+  }
+
+  getVerdictApi(sId: any): Observable<any> {
+   this.path = `get-verdictbysid/${sId}`;
+   return this.baseService.get(this.path);
   }
 
   getQuestionsCountApi(): Observable<any> {

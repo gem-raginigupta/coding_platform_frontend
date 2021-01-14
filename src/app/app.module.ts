@@ -3,9 +3,9 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { CreateContestComponent } from './create-contest/create-contest.component';
+import { CreateContestComponent } from './Components/create-contest/create-contest.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { HomePageComponent } from './home-page/home-page.component';
+import { HomePageComponent } from './Components/home-page/home-page.component';
 import {
   MatButtonModule,
   MatCardModule, MatDatepickerModule,
@@ -14,15 +14,15 @@ import {
   MatListModule,
   MatSelectModule,
   MatSidenavModule, MatToolbarModule,
-  MatNativeDateModule, MatPaginatorModule,
+  MatNativeDateModule, MatPaginatorModule, MatTableModule,
 } from '@angular/material';
-import { SumOverSubsetsComponent } from './sum-over-subsets/sum-over-subsets.component';
+import { SumOverSubsetsComponent } from './Components/sum-over-subsets/sum-over-subsets.component';
 import {HttpClientModule} from '@angular/common/http';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {NgxMatDatetimePickerModule, NgxMatNativeDateModule} from '@angular-material-components/datetime-picker';
 import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
-import { AllContestsComponent } from './all-contests/all-contests.component';
-import { QuestionsOfContestComponent } from './questionsOfContest/questionsOfContest.component';
+import { AllContestsComponent } from './Components/all-contests/all-contests.component';
+import { QuestionsOfContestComponent } from './Components/questionsOfContest/questionsOfContest.component';
 
 @NgModule({
   declarations: [
@@ -54,6 +54,7 @@ import { QuestionsOfContestComponent } from './questionsOfContest/questionsOfCon
     FormsModule,
     CKEditorModule,
     MatPaginatorModule,
+    MatTableModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -43,7 +43,7 @@
 .div2 {
   background-color: white;
   border-radius: 20px;
-  height: 550px;
+  height: 520px;
   width: 100%;
   box-shadow: 0px 0px 2px #bbbbbb;
 }
@@ -143,4 +143,17 @@ textarea {
 .code {
   height: 400px;
   width: 95%;
+}
+
+.mat-table {
+  width: 100%;
+  margin-top: 20px;
+}
+
+.verdict-success {
+  color: green;
+}
+
+.verdict-fail {
+  color: red;
 }

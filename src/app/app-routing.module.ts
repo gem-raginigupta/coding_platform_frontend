@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import {CreateContestComponent} from './create-contest/create-contest.component';
-import {SumOverSubsetsComponent} from './sum-over-subsets/sum-over-subsets.component';
-import {AllContestsComponent} from './all-contests/all-contests.component';
-import {QuestionsOfContestComponent} from './questionsOfContest/questionsOfContest.component';
+import {CreateContestComponent} from './Components/create-contest/create-contest.component';
+import {SumOverSubsetsComponent} from './Components/sum-over-subsets/sum-over-subsets.component';
+import {AllContestsComponent} from './Components/all-contests/all-contests.component';
+import {QuestionsOfContestComponent} from './Components/questionsOfContest/questionsOfContest.component';
 
 
 const routes: Routes = [

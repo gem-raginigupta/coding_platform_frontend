@@ -1,6 +1,6 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
-import {ContestService} from '../contest.service';
-import {QuestionService} from '../question.service';
+import {ContestService} from '../../Services/contest.service';
+import {QuestionService} from '../../Services/question.service';
 import {Router} from '@angular/router';
 import {MatPaginator} from '@angular/material';
 

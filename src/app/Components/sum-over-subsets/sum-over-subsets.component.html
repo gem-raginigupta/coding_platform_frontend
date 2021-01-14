@@ -129,13 +129,10 @@
     <div class="col-md-7 offset-1">
       <div class="div2">
         <div class="lang float-right">
-          <mat-select [(ngModel)]="language" [disabled]="disableSelect.value">
-            <mat-option value="python">Python</mat-option>
-            <mat-option value="nodeJS" disabled>NodeJS (disabled)</mat-option>
-            <mat-option value="java">Java</mat-option>
-            <mat-option value="C">C</mat-option>
-            <mat-option value="C++">C++</mat-option>
-          </mat-select>
+            <mat-select [(value)]="selectedLanguage">
+              <mat-option></mat-option>
+              <mat-option [value]="lang.value" *ngFor="let lang of languages">{{ lang.viewValue }}</mat-option>
+            </mat-select>
         </div>
         <textarea [(ngModel)]="code" class="code" placeholder="Write your code!"></textarea>
       </div>
@@ -144,6 +141,40 @@
       <div class="float-right mt-3">
         <button mat-raised-button class="run-btn">RUN</button>
         <button mat-button class="submit-btn ml-3" (click)="submitCode()">SUBMIT</button>
+      </div>
+      <div class="p-2" *ngIf="verdictResult === 'SUCCESS'">
+        <p style="color: gray; font-family: 'Bitstream Charter'; font-weight: bold">Result : {{verdict}}</p>
+        <table mat-table [dataSource]="testResultListDataSource" class="mat-elevation-z8">
+
+          <ng-container matColumnDef="test">
+            <th mat-header-cell *matHeaderCellDef> Test </th>
+            <td mat-cell *matCellDef="let element"> Test case {{testResultListDataSource.data.indexOf(element) + 1}}
+            </td>
+          </ng-container>
+
+          <ng-container matColumnDef="verdict">
+            <th mat-header-cell *matHeaderCellDef> </th>
+            <td mat-cell *matCellDef="let element">
+              <mat-icon *ngIf="element.verdict.toLowerCase() === 'success'" class="verdict-success">check_circle</mat-icon>
+              <mat-icon *ngIf="element.verdict.toLowerCase() === 'failed'" class="verdict-fail">cancel</mat-icon>
+            </td>
+          </ng-container>
+
+          <ng-container matColumnDef="metric1">
+            <th mat-header-cell *matHeaderCellDef> Time(s) </th>
+            <td mat-cell *matCellDef="let element"> {{element.metric.substring(element.metric.indexOf('Time(s):')
+              + 'Time(s): '.length, element.metric.indexOf('Memory'))}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="metric2">
+            <th mat-header-cell *matHeaderCellDef> Memory(kb) </th>
+            <td mat-cell *matCellDef="let element"> {{element.metric.substring(element.metric.indexOf('Memory') + 'Memory(Kb):'.length + 1, element.metric.length - 1)}} </td>
+          </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+
       </div>
     </div>
   </div>

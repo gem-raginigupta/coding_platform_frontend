@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import {QuestionService} from '../question.service';
-import {ContestService} from '../contest.service';
-import * as moment from 'moment';
-import {FormControl} from '@angular/forms';
+import {QuestionService} from '../../Services/question.service';
+import {ContestService} from '../../Services/contest.service';
 import {ActivatedRoute} from '@angular/router';
+import {MatTableDataSource} from '@angular/material';
+import {interval} from 'rxjs';
 
 @Component({
   selector: 'app-sum-over-subsets',
@@ -19,10 +19,23 @@ export class SumOverSubsetsComponent implements OnInit {
   private currentQuestion: any;
   private previousIndex: any;
   code: string;
-  language: string;
-  disableSelect = new FormControl(false);
   private qId: number;
+  languages: any = [
+    {value: 'python', viewValue: 'Python'},
+    {value: 'java', viewValue: 'Java'},
+    {value: 'C', viewValue: 'C'},
+    {value: 'C++', viewValue: 'C++'}
+  ];
+  selectedLanguage = this.languages[0].value;
+  private verdict: string;
+  private testResults: any;
+  private verdictResult: any;
+  private sId: number;
   constructor(private questionService: QuestionService, private contestService: ContestService, private route: ActivatedRoute) { }
+
+  public testResultListDataSource: MatTableDataSource<any>;
+
+  displayedColumns: string[] = ['test', 'metric1', 'metric2', 'verdict'];
 
   ngOnInit() {
     this.route.params.subscribe( params =>
@@ -30,8 +43,8 @@ export class SumOverSubsetsComponent implements OnInit {
     );
     console.log('qId', this.qId);
     this.getQuestion();
-    // this.getAllQuestions();
     this.previousIndex = 0;
+    this.getVerdict();
   }
 
   getQuestion() {
@@ -90,14 +103,35 @@ export class SumOverSubsetsComponent implements OnInit {
   // }
 
   submitCode() {
-    console.log('lang', this.language);
-    this.questionService.submitCodeApi(1, this.qId, this.language, this.code).subscribe(
+    console.log('lang', this.selectedLanguage);
+    this.questionService.submitCodeApi(1, this.qId, this.selectedLanguage, this.code).subscribe(
       res => {
+        this.sId = res.result;
         console.log(res, 'Code submitted');
       },
       error => {
         console.log('Code submission failed failed', error);
       }
     );
+  }
+
+  getVerdict() {
+    let int = interval(10000)
+      .subscribe((val) => {
+        console.log('called');
+        this.questionService.getVerdictApi(this.sId).subscribe(res => {
+            console.log('res', res);
+            if (res.result !== null) {
+              this.verdictResult = res.message;
+              this.verdict = res.result.verdict;
+              this.testResults = JSON.parse(res.result.testResults);
+              this.testResultListDataSource = new MatTableDataSource<any>(this.testResults);
+              int.unsubscribe();
+            }
+          },
+          error => {
+            console.log('errorMessage', error);
+          });
+      });
   }
 }
