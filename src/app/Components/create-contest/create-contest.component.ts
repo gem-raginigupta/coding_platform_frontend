@@ -94,7 +94,7 @@ export class CreateContestComponent implements OnInit {
       console.log(element.endDate);
       this.contestService.createContestApi(element).subscribe(
         res => {
-          // this.contestService.contestDetails = res.result;
+          this.contestService.contestDetails = res.result;
           // this.contestFormGroup.controls.contestName.setValue(this.contestService.contestDetails.contestName);
           // this.contestFormGroup.controls.startDate.setValue(this.contestService.contestDetails.start_date);
           // this.contestFormGroup.controls.endDate.setValue(this.contestService.contestDetails.end_date);
@@ -177,15 +177,15 @@ export class CreateContestComponent implements OnInit {
     console.log('file', this.htmlFile);
     console.log('formData', formData);
     console.log('data', this.questionData);
-    // this.contestService.createQuestionApi(formData).subscribe(
-    //   res => {
-    //     this.contestService.questionDetails = res.result;
-    //     console.log(res, 'Question created');
-    //   },
-    //   error => {
-    //     console.log('Question creation failed', error);
-    //   }
-    // );
+    this.contestService.createQuestionApi(formData).subscribe(
+      res => {
+        this.contestService.questionDetails = res.result;
+        console.log(res, 'Question created');
+      },
+      error => {
+        console.log('Question creation failed', error);
+      }
+    );
   }
 
   checkExampleLength(index: number): boolean {
