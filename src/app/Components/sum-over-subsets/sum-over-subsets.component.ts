@@ -33,7 +33,7 @@ export class SumOverSubsetsComponent implements OnInit {
   public sId: number;
   isLoading = false;
 
-  constructor(private questionService: QuestionService, private contestService: ContestService,
+  constructor(public questionService: QuestionService, public contestService: ContestService,
               private route: ActivatedRoute) {}
 
   public testResultListDataSource: MatTableDataSource<any>;

@@ -11,7 +11,7 @@ export class QuestionsOfContestComponent implements OnInit {
   public startValue = 65;
   public cId: number;
 
-  constructor(private questionService: QuestionService, private route: ActivatedRoute, private router: Router) { }
+  constructor(public questionService: QuestionService, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit() {
     this.route.params.subscribe( params =>

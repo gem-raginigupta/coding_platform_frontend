@@ -8,7 +8,7 @@ import {Observable} from 'rxjs';
 })
 export class QuestionService {
   allQuestions: any;
-  private path = '';
+  path = '';
   private param: HttpParams;
   private headers = new HttpHeaders();
   constructor(private baseService: BaseService) { }

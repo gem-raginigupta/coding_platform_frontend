@@ -7,7 +7,7 @@ import {Observable} from 'rxjs';
   providedIn: 'root'
 })
 export class BaseService {
-  private baseURL: string;
+  baseURL: string;
 
   constructor(private http: HttpClient) {
     this.baseURL = environment.baseURL;

@@ -1,6 +1,5 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {ContestService} from '../../Services/contest.service';
-import {QuestionService} from '../../Services/question.service';
 import {Router} from '@angular/router';
 import {MatPaginator} from '@angular/material';
 
@@ -14,7 +13,7 @@ export class AllContestsComponent implements OnInit {
   public contests: any;
   public contestsCount: number;
 
-  constructor(private contestService: ContestService, private questionService: QuestionService, private router: Router) { }
+  constructor(public contestService: ContestService, private router: Router) { }
 
   ngOnInit() {
     this.paginator.pageIndex = 0;

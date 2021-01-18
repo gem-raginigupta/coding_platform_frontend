@@ -29,7 +29,7 @@ export class CreateContestComponent implements OnInit {
   testCaseFiles: FileList[] = [];
   public Editor = ClassicEditor;
 
-  constructor(private formBuilder: FormBuilder, private contestService: ContestService, private dialog: MatDialog) {
+  constructor(private formBuilder: FormBuilder, public contestService: ContestService, private dialog: MatDialog) {
   }
 
   ngOnInit() {

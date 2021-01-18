@@ -7,7 +7,7 @@ import {Observable} from 'rxjs';
   providedIn: 'root'
 })
 export class ContestService {
-  private path = '';
+  path = '';
   private param: HttpParams;
   public contestDetails: any;
   public questionDetails: any;
