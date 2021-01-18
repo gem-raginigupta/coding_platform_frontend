@@ -11,8 +11,8 @@ import {MatPaginator} from '@angular/material';
 })
 export class AllContestsComponent implements OnInit {
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
-  private contests: any;
-  private contestsCount: number;
+  public contests: any;
+  public contestsCount: number;
 
   constructor(private contestService: ContestService, private questionService: QuestionService, private router: Router) { }
 

@@ -14,12 +14,12 @@ export class SumOverSubsetsComponent implements OnInit {
 
   public question: any;
   public questionFile: any;
-  private allQuestions: any;
+  public allQuestions: any;
   startValue = 65;
-  private currentQuestion: any;
-  private previousIndex: any;
+  public currentQuestion: any;
+  public previousIndex: any;
   code: string;
-  private qId: number;
+  public qId: number;
   languages: any = [
     {value: 'python', viewValue: 'Python'},
     {value: 'java', viewValue: 'Java'},
@@ -27,11 +27,14 @@ export class SumOverSubsetsComponent implements OnInit {
     {value: 'C++', viewValue: 'C++'}
   ];
   selectedLanguage = this.languages[0].value;
-  private verdict: string;
-  private testResults: any;
-  private verdictResult: any;
-  private sId: number;
-  constructor(private questionService: QuestionService, private contestService: ContestService, private route: ActivatedRoute) { }
+  public verdict: string;
+  public testResults: any;
+  public verdictResult: any;
+  public sId: number;
+  isLoading = false;
+
+  constructor(private questionService: QuestionService, private contestService: ContestService,
+              private route: ActivatedRoute) {}
 
   public testResultListDataSource: MatTableDataSource<any>;
 
@@ -44,7 +47,7 @@ export class SumOverSubsetsComponent implements OnInit {
     console.log('qId', this.qId);
     this.getQuestion();
     this.previousIndex = 0;
-    this.getVerdict();
+    // this.getVerdict();
   }
 
   getQuestion() {
@@ -103,10 +106,12 @@ export class SumOverSubsetsComponent implements OnInit {
   // }
 
   submitCode() {
+    // this.isLoading = true;
     console.log('lang', this.selectedLanguage);
     this.questionService.submitCodeApi(1, this.qId, this.selectedLanguage, this.code).subscribe(
       res => {
         this.sId = res.result;
+        this.getVerdict();
         console.log(res, 'Code submitted');
       },
       error => {
@@ -116,12 +121,14 @@ export class SumOverSubsetsComponent implements OnInit {
   }
 
   getVerdict() {
+    this.isLoading = true;
     let int = interval(10000)
       .subscribe((val) => {
         console.log('called');
         this.questionService.getVerdictApi(this.sId).subscribe(res => {
             console.log('res', res);
             if (res.result !== null) {
+              this.isLoading = false;
               this.verdictResult = res.message;
               this.verdict = res.result.verdict;
               this.testResults = JSON.parse(res.result.testResults);

@@ -14,7 +14,7 @@ import {
   MatListModule,
   MatSelectModule,
   MatSidenavModule, MatToolbarModule,
-  MatNativeDateModule, MatPaginatorModule, MatTableModule,
+  MatNativeDateModule, MatPaginatorModule, MatTableModule, MatProgressSpinnerModule,
 } from '@angular/material';
 import { SumOverSubsetsComponent } from './Components/sum-over-subsets/sum-over-subsets.component';
 import {HttpClientModule} from '@angular/common/http';
@@ -55,6 +55,7 @@ import { QuestionsOfContestComponent } from './Components/questionsOfContest/que
     CKEditorModule,
     MatPaginatorModule,
     MatTableModule,
+    MatProgressSpinnerModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

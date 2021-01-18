@@ -8,8 +8,8 @@ import {ActivatedRoute, Params, Route, Router} from '@angular/router';
   styleUrls: ['./questionsOfContest.component.css']
 })
 export class QuestionsOfContestComponent implements OnInit {
-  private startValue = 65;
-  private cId: number;
+  public startValue = 65;
+  public cId: number;
 
   constructor(private questionService: QuestionService, private route: ActivatedRoute, private router: Router) { }
 

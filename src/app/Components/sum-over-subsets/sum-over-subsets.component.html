@@ -142,10 +142,14 @@
         <button mat-raised-button class="run-btn">RUN</button>
         <button mat-button class="submit-btn ml-3" (click)="submitCode()">SUBMIT</button>
       </div>
+      <div>
+        <mat-progress-spinner *ngIf="isLoading" class="offset-5 mt-5"
+                              color="primary"
+                              mode="indeterminate">
+        </mat-progress-spinner>
       <div class="p-2" *ngIf="verdictResult === 'SUCCESS'">
         <p style="color: gray; font-family: 'Bitstream Charter'; font-weight: bold">Result : {{verdict}}</p>
         <table mat-table [dataSource]="testResultListDataSource" class="mat-elevation-z8">
-
           <ng-container matColumnDef="test">
             <th mat-header-cell *matHeaderCellDef> Test </th>
             <td mat-cell *matCellDef="let element"> Test case {{testResultListDataSource.data.indexOf(element) + 1}}
@@ -174,7 +178,7 @@
           <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
           <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
         </table>
-
+      </div>
       </div>
     </div>
   </div>
