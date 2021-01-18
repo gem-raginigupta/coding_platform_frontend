@@ -26,7 +26,7 @@ export class CreateContestComponent implements OnInit {
   previousIndex = 0;
   questionTab: QuestionTab[] = [];
   filename = '';
-  testCaseFiles: FileList[] = [];
+  testCaseFiles: FileList;
   public Editor = ClassicEditor;
 
   constructor(private formBuilder: FormBuilder, public contestService: ContestService, private dialog: MatDialog) {
@@ -217,19 +217,25 @@ export class CreateContestComponent implements OnInit {
   //   );
   // }
 
-  createTestCase() {
+  uploadTestCase() {
     const formData = new FormData();
     // this.testCaseFiles.forEach((file, i) => formData.append('files', file[i]));
+
     for (let i; i <= this.testCaseFiles.length; i++) {
-      formData.append('files', i);
+      const file: File = this.testCaseFiles[i];
+      formData.append('files', file);
     }
+    console.log('formdata', formData);
+    // for (const file of this.testCaseFiles) {
+    //   formData.append('files', file, file.get);
+    // }
     console.log('tcFile', this.testCaseFiles);
-    this.contestService.createTestCaseApi(this.contestService.questionDetails.qId, formData).subscribe(
+    this.contestService.uploadTestCaseApi(17, formData).subscribe(
         res => {
-          console.log(res, 'Testcase created');
+          console.log(res, 'Testcase uploaded');
         },
         error => {
-          console.log('Testcase creation failed', error);
+          console.log('Testcase uploading failed', error);
         }
       );
   }
@@ -254,7 +260,7 @@ export class CreateContestComponent implements OnInit {
     // for (let i; i <= event.target.files.length; i++) {
     //   this.testCaseFiles.push(event.target.files[i]);
     // }
-    console.log('Selected files are--->', event.target.files);
+    console.log('tc files are--->', this.testCaseFiles);
   }
 }
 

@@ -277,3 +277,12 @@ textarea {
   outline: none;
 }
 
+.upload-testcase {
+  cursor: pointer;
+}
+
+:host ::ng-deep label {
+  display: inline-flex;
+  margin-bottom: .5rem;
+}
+

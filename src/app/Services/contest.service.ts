@@ -23,7 +23,7 @@ export class ContestService {
     return this.baseService.postFormData(this.path, formData);
   }
 
-  createTestCaseApi(qId: number, formData: FormData): Observable<any> {
+  uploadTestCaseApi(qId: number, formData: FormData): Observable<any> {
     this.path = 'bulkupload-testcase/' + qId;
     return this.baseService.postFormData(this.path, formData);
   }

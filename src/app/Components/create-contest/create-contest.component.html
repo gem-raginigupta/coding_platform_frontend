@@ -96,10 +96,10 @@
           </ng-container>
         <input multiple type="file" id="file" accept="*/*" style="display: none;" (change)="onSelectedFile($event)">
         <label for="file">
-          <button mat-icon-button><mat-icon>upload</mat-icon>
-          </button>
-          {{filename === '' ? 'Test case': filename}}</label>
-          <button class="ml-3 submit-btn" mat-raised-button (click)="createTestCase()">Submit</button>
+          <mat-icon class="upload-testcase">upload</mat-icon>
+          {{filename === '' ? 'Test case': filename}}
+        </label>
+          <button class="ml-3 submit-btn" mat-raised-button (click)="uploadTestCase()">Submit</button>
         </div>
       </form>
 
