@@ -26,7 +26,7 @@ export class CreateContestComponent implements OnInit {
   previousIndex = 0;
   questionTab: QuestionTab[] = [];
   filename = '';
-  testCaseFiles: File[] = [];
+  testCaseFiles: FileList;
   public Editor = ClassicEditor;
 
   constructor(private formBuilder: FormBuilder, public contestService: ContestService, private dialog: MatDialog) {
@@ -220,13 +220,13 @@ export class CreateContestComponent implements OnInit {
   uploadTestCase() {
     const formData = new FormData();
     // this.testCaseFiles.forEach((file, i) => formData.append('files', file[i]));
-
-    for (let i; i <= this.testCaseFiles.length; i++) {
-      // const tcFiles = Array.from(this.testCaseFiles);
-      const file: File = this.testCaseFiles[i];
+    const tcFiles = Array.from(this.testCaseFiles);
+    for (let i; i <= tcFiles.length; i++) {
+      // const file: File = this.testCaseFiles[i];
+      const file: File = tcFiles[i];
       formData.append('files', file);
     }
-    console.log('formdata', formData);
+    console.log('tc index', tcFiles[1]);
     // for (const file of this.testCaseFiles) {
     //   formData.append('files', file, file.get);
     // }
