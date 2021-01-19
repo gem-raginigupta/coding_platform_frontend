@@ -26,7 +26,7 @@ export class CreateContestComponent implements OnInit {
   previousIndex = 0;
   questionTab: QuestionTab[] = [];
   filename = '';
-  testCaseFiles: FileList;
+  testCaseFiles: File[] = [];
   public Editor = ClassicEditor;
 
   constructor(private formBuilder: FormBuilder, public contestService: ContestService, private dialog: MatDialog) {
@@ -222,6 +222,7 @@ export class CreateContestComponent implements OnInit {
     // this.testCaseFiles.forEach((file, i) => formData.append('files', file[i]));
 
     for (let i; i <= this.testCaseFiles.length; i++) {
+      // const tcFiles = Array.from(this.testCaseFiles);
       const file: File = this.testCaseFiles[i];
       formData.append('files', file);
     }
@@ -230,7 +231,7 @@ export class CreateContestComponent implements OnInit {
     //   formData.append('files', file, file.get);
     // }
     console.log('tcFile', this.testCaseFiles);
-    this.contestService.uploadTestCaseApi(17, formData).subscribe(
+    this.contestService.uploadTestCaseApi(this.contestService.questionDetails.qId, formData).subscribe(
         res => {
           console.log(res, 'Testcase uploaded');
         },
